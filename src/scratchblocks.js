@@ -338,7 +338,7 @@ var scratchblocks = function () {
       } else if (overrideCategories.indexOf(name) > -1) {
         info.category = name;
         info.categoryIsDefault = false;
-      } else if(overrideCategoryAliases[name]) {
+      } else if(overrideCategoryAliases.hasOwnProperty(name)) {
         info.category = overrideCategoryAliases[name];
         info.categoryIsDefault = false;
       } else if (overrideShapes.indexOf(name) > -1) {
