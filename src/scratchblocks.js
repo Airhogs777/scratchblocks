@@ -60,6 +60,28 @@ var scratchblocks = function () {
 
   var overrideCategories = ["motion", "looks", "sound", "pen", "variables", "list", "events", "control", "sensing", "operators", "custom", "custom-arg", "extension", "grey", "obsolete"];
   var overrideShapes = ["hat", "cap", "stack", "boolean", "reporter", "ring"];
+  var overrideCategoryAliases = {
+    "look": "looks",
+    "sounds": "sound",
+    "variable": "variables",
+    "var": "variables",
+    "vars": "variables",
+    "lists": "list",
+    "event": "events",
+    "controls": "control",
+    "operator": "operators",
+    "custom-args": "custom-arg",
+    "parameter": "custom-arg",
+    "arg": "custom-arg",
+    "args": "custom-arg",
+    "extensions": "extension",
+    "lego": "extension",
+    "wedo": "extension",
+    "picoboard": "extension",
+    "pico": "extension",
+    "gray": "grey",
+    "undefined": "obsolete"
+  }
 
   // languages that should be displayed right to left
   var rtlLanguages = ['ar', 'fa', 'he'];
@@ -315,6 +337,9 @@ var scratchblocks = function () {
         info.categoryIsDefault = false;
       } else if (overrideCategories.indexOf(name) > -1) {
         info.category = name;
+        info.categoryIsDefault = false;
+      } else if(overrideCategoryAliases[name]) {
+        info.category = overrideCategoryAliases[name];
         info.categoryIsDefault = false;
       } else if (overrideShapes.indexOf(name) > -1) {
         info.shape = name;
